@@ -113,14 +113,16 @@ const Home = () => {
         <>
             {unauthenticated ?
                 (
-                    <div>
-                        <h1>Error. Not Logged In.</h1>
-                        <p>Please wait, redirecting to login page...</p>
+                    <div className="flex h-screen">
+                        <div className="flex flex-col justify-center text-center m-auto text-lg font-bold">
+                        <h1>Error. Not Logged In.</h1><br/>
+                        <h1>Please wait, redirecting to login page...</h1>
+                        </div>
                     </div>
                 ) : (
 
                     <div className="p-4">
-                        <div className="flex justify-center items-center gap-x-4">
+                        <div className="flex justify-center items-center gap-x-4 relative">
                             <button
                                 className="bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg"
                                 onClick={() => setShowType('table')}
@@ -132,8 +134,8 @@ const Home = () => {
                                 onClick={() => setShowType('card')}
                             >Card
                             </button>
+                            <Link onClick={handleLogout} to="/login" className="bg-blue-500 hover:bg-blue-700 text-white font-normal py-0.5 px-2 mx-2 rounded absolute top-0 right-0"><button>Logout</button></Link>
                         </div>
-                        <Link onClick={handleLogout} to="/login" className="bg-blue-500 hover:bg-blue-700 text-white font-normal py-0.5 px-2 rounded"><button>Logout</button></Link>
                         <div className="flex justify-between items-center">
                             <h1 className="text-3x1 mx-2 my-4">Sponsors List</h1>
                             <Link to='/add'>
