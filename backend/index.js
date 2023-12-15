@@ -3,7 +3,7 @@ import cors from "cors";
 import {PORT, mongoDBURL} from "./config.js"; 
 import mongoose from "mongoose";
 import auth from './routes/auth.js'
-import sponsorRoute from './routes/sponsorRoute.js';
+// import sponsorRoute from './routes/sponsorRoute.js';
 import errorHandler from './middleware/errorHandler.js';
 import undefinedRouteHandler from './middleware/undefinedRoute.js';
 
@@ -28,10 +28,10 @@ mongoose
 //Option 1: Allow all origins with Default of cors(*) 
 app.use(cors());
 
-//Option 2: Allow custom origins
+// Option 2: Allow custom origins
 // app.use(
 //     cors({
-//         origins: "*",
+//         origin: "*",
 //         methods:['GET', 'POST', 'PUT', 'DELETE'],
 //         allowedHeaders:['Content-Type'],
 //     })
@@ -44,7 +44,7 @@ app.get('/express', (request, response) => {
 
 app.use('/auth', auth) //for signup and login authentication
 
-app.use('/sponsor', sponsorRoute); //for performing CRUD operations within the website 
+// app.use('/sponsor', sponsorRoute); //for performing CRUD operations within the website 
 
 // Apply the middleware for handling undefined routes
 app.use(undefinedRouteHandler);

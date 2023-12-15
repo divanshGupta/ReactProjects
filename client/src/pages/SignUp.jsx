@@ -14,32 +14,10 @@ const SignUp = () => {
 
     let signup = false;
 
-    // useEffect(() => {
-    //     // Get the current URL
-    //     const currentUrl = window.location.href;
-    
-    //     // Now, you can use the currentUrl in a condition
-    //     if (currentUrl === 'http://localhost:5173/signup') {
-    //       // Do something when the URL matches a specific condition
-    //       signup=true;
-    //     //   console.log(`Page is : ${currentUrl}`);
-    //     //   console.log(`signup is : ${signup}`);
-    //     }
-    //   }, []);
-
       const handleSubmit = async (e) => {
         e.preventDefault();
     
         const form = e.target;
-        // const usernameError = form.querySelector('#username-error');
-        // const emailError = form.querySelector('#email-error');
-        // const passwordError = form.querySelector('#password-error');
-        // const errorMessages = form.querySelector('#error-messages');
-    
-        // const username = form.elements.username.value;
-        // const email = form.elements.email.value;
-        // const password = form.elements.password.value;
-        
         const username = Username;
         const email = Email;
         const password = Password;
@@ -98,9 +76,9 @@ const SignUp = () => {
       
     return(
         <>
-        <div className="flex h-screen">
-            <div className="flex bg-slate-400 w-72 justify-center m-auto">
-                <div className="flex flex-col">
+        <div className="flex h-screen bg-slate-800">
+            <div className="flex bg-slate-400 w-[9cm] h-[9cm] justify-center m-auto rounded-md">
+                <div className="flex flex-col m-auto">
                     <h2 className="font-sans text-base font-medium justify-center text-center">
                     {
                         signup ? <p>New User? Go to <Link to='/signup' className="bg-blue-500 hover:bg-blue-700 text-white font-normal py-0.5 px-2 rounded">Sign Up</Link></p> : <p>Already have an account?<br></br> Go to <Link to='/login' className="bg-blue-500 hover:bg-blue-700 text-white font-normal py-0.5 px-2 rounded">Log In</Link></p>
@@ -108,7 +86,7 @@ const SignUp = () => {
                     </h2>
                     <form id="signup-form" className="flex flex-col" onSubmit={handleSubmit}>
                     <input 
-                    className="justify-center p-2 m-2" 
+                    className="justify-center w-[6cm] p-2 m-2 rounded-md" 
                     type="text" 
                     name="username" 
                     placeholder="Username" 
@@ -119,7 +97,7 @@ const SignUp = () => {
                     <div id="username-error" className="error-message text-red-600 text-sm font-semibold">{usernameError}</div>
 
                     <input 
-                    className="justify-center p-2 m-2" 
+                    className="justify-center p-2 m-2 rounded-md" 
                     type="email" 
                     name="email" 
                     placeholder="Email"
@@ -130,7 +108,7 @@ const SignUp = () => {
                     <div id="email-error" className="error-message text-red-600 text-sm font-semibold">{emailError}</div>
 
                     <input 
-                    className="justify-center p-2 m-2" 
+                    className="justify-center p-2 m-2 rounded-md" 
                     type="password" 
                     name="password" 
                     placeholder="Password" 
@@ -140,7 +118,7 @@ const SignUp = () => {
                     required/>
                     <div id="password-error" className="error-message text-red-600 text-sm font-semibold">{passwordError}</div>
 
-                    <button className="bg-cyan-700 text-white text-xs justify-end fitems-end m-2 p-2" type="submit">Sign Up</button>
+                    <button className="bg-cyan-700 text-white text-xs justify-end fitems-end m-2 p-2 rounded-md" type="submit">Sign Up</button>
                     </form>
 
                     <div id="error-messages"></div>

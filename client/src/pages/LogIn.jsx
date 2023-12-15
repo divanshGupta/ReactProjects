@@ -14,18 +14,6 @@ const LogIn = () =>{
     const navigate = useNavigate();
 
     let signup = false;
-    // useEffect(() => {
-    //     // Get the current URL
-    //     const currentUrl = window.location.href;
-    
-    //     // Now, you can use the currentUrl in a condition
-    //     if (currentUrl === 'http://localhost:5173/signup') {
-    //       // Do something when the URL matches a specific condition
-    //       signup=true;
-    //     //   console.log(`Page is : ${currentUrl}`);
-    //     //   console.log(`signup is : ${signup}`);
-    //     }
-    //   }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -73,7 +61,7 @@ const LogIn = () =>{
             const token = data.authtoken;
             localStorage.setItem('authtoken', token);
             if (data.success === true) {
-              navigate("/home");
+              navigate("/web-internal/home");
             } else {
               alert("No redirection address present.");
             }
@@ -89,9 +77,9 @@ const LogIn = () =>{
 
     return(
         <>
-        <div className="flex h-screen">
-            <div className="flex bg-slate-400 w-72 justify-center m-auto">
-                <div className="flex flex-col">
+        <div className="flex h-screen bg-slate-800">
+            <div className="flex bg-slate-400 w-72 h-64 justify-center m-auto rounded-md">
+                <div className="flex flex-col m-auto">
                     <h2 className="font-sans text-base font-medium justify-center text-center">
                     {
                         !signup ? <p>New User?<br></br> Go to <Link to='/signup' className="bg-blue-500 hover:bg-blue-700 text-white font-normal py-0.5 px-2 rounded">Sign Up</Link></p> : <p>Already have an account?<br></br> Go to <Link to='/login' className="bg-blue-500 hover:bg-blue-700 text-white font-normal py-0.5 px-2 rounded">Log In</Link></p>
@@ -99,7 +87,7 @@ const LogIn = () =>{
                     </h2>
                     <form id="login-form" className="flex flex-col" onSubmit={handleSubmit}>
                     <input 
-                    className="justify-center p-2 m-2" 
+                    className="justify-center p-2 m-2 mt-4 mb-0 rounded-md" 
                     type="email" 
                     name="email" 
                     placeholder="Email" 
@@ -110,7 +98,7 @@ const LogIn = () =>{
                     <div id="email-error" className="error-message text-red-600 text-sm font-semibold m-2">{emailError}</div>
 
                     <input 
-                    className="justify-center p-2 m-2" 
+                    className="justify-center p-2 m-2 mt-0 mb-0 rounded-md" 
                     type="password" 
                     name="password" 
                     placeholder="Password" 
@@ -120,7 +108,7 @@ const LogIn = () =>{
                     required/>
                     <div id="password-error" className="error-message text-red-600 text-sm font-semibold m-2">{passwordError}</div>
                     
-                    <button className="bg-cyan-700 text-white text-xs justify-end fitems-end m-2 p-2" type="submit">Log In</button>
+                    <button className="bg-cyan-700 text-white text-xs justify-end fitems-end m-2 p-2 rounded-md" type="submit">Log In</button>
                     </form>
                 <div id="error-messages" className="error-message flex flex-col text-red-600 text-sm font-semibold justify-center text-center" style={{ color: 'red' }}>{errorMessages}</div>
                 </div>

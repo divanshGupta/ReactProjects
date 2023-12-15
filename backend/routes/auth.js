@@ -52,21 +52,27 @@ router.post('/create-user', [
     */
     const newUser = await Users.create({
       username: username,
-      email: email,
+      email: email.toLowerCase(),
       password: secPass,
     });
 
-    // Save the user to the database
-    // await newUser.save();
-
+    
     const data = {
       newUser:{
         id: newUser.id
       }
     } //get unique id of newly created user
 
-    const authtoken = jwt.sign(data, JWT_SECRET); //create a unique jwt token for user using it's unique id
-    console.log(authtoken);
+    const authtoken = jwt.sign(data, JWT_SECRET, {
+      expiresIn: "5h",
+    }); //create a unique jwt token for user using it's unique id
+
+    newUser.token = authtoken;
+
+    // Save the user to the database
+    await newUser.save();
+
+    // console.log(authtoken);
 
     console.log('New user added to the database:', newUser);
 
@@ -105,7 +111,7 @@ router.post('/login', [
 
   try {
     const {email, password} = req.body;
-    let user = await Users.findOne({email});
+    let user = await Users.findOne({email}); // Validate if user exist in our database
 
     if(!user){
       return res.status(400).json({ errors: [{ msg: 'Please enter correct credentials.' }] });
@@ -126,7 +132,8 @@ router.post('/login', [
     } //get unique id of newly created user
 
     const authtoken = jwt.sign(data, JWT_SECRET); //create a unique jwt token for user using it's unique id
-    console.log(authtoken);
+    // console.log(authtoken);
+    console.log('New login auth token created.');
 
     res.json({success, authtoken, redirect:'/homepage'})
 
