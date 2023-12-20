@@ -106,6 +106,19 @@ const SignUp = () => {
                     autoComplete="current-email" 
                     required/>
                     <div id="email-error" className="error-message text-red-600 text-sm font-semibold">{emailError}</div>
+                    
+                    <select  
+                    className="justify-center p-2 m-2 rounded-md" 
+                    name="userType" id="userType"
+                    value={userType}
+                    onChange={(e)=>{}}
+                    autoComplete=""
+                    required>
+                      <option value="">Select your type</option>
+                      <option value="sponsor">Sponsor</option>
+                      <option value="creator">Creator</option>
+                    </select>
+                    <div id="email-error" className="error-message text-red-600 text-sm font-semibold">{userTypeError}</div>
 
                     <input 
                     className="justify-center p-2 m-2 rounded-md" 
